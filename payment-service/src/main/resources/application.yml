@@ -16,3 +16,17 @@ spring:
         properties:
             hibernate:
                 dialect: org.hibernate.dialect.PostgreSQLDialect
+
+    kafka:
+        bootstrap-servers: ${KAFKA_BROKER:localhost:9092}
+        consumer:
+            group-id: payment-group
+            auto-offset-reset: latest
+        topic:
+            orchestrator: orchestrator
+            payment-success: payment-success
+            payment-fail: payment-fail
+
+logging:
+    level:
+        org.apache.kafka: OFF
